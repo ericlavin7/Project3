@@ -1,4 +1,3 @@
-
 var maxTemp;
 var minTemp;
 var chanceOfRain;
@@ -33,6 +32,7 @@ var makeApiRequest = function(){
             }
             
 }
+
 
 var makeSuggestions = function () {
     var clothing = {umbrella:false, rainCoat:false, rainBoots:false,snowBoots:false,
@@ -71,6 +71,7 @@ var makeSuggestions = function () {
 
 
 }
+
 var maxTemp;
 var minTemp;
 var chanceOfRain;
@@ -101,4 +102,3 @@ var makeApiRequest = function(){
             }
             
 }
-
