@@ -58,6 +58,32 @@ var makeSuggestions = function () {
         snowBoots = true;
     }
 
+var makeSuggestions = function () {
+    var clothing = {umbrella:false, rainCoat:false, rainBoots:false,snowBoots:false,
+     jacket:false, gloves:false, hat:false, shorts:false, shades:false, hoodie:false};
+    if (maxTemp <= 32) {
+        jacket, gloves, hat = true;
+        if (maxTemp < 10) {
+            snowBoots = true;
+        }
+    }
+    if (maxTemp >= 70) {
+        shorts = true;
+    }
+    if (minTemp > 32 && maxTemp < 80) {
+        hoodie = true;
+    }
+    if (chanceOfRain < 10) {
+        shades = true;
+    }
+    if (chanceOfRain > 50) {
+        umbrella, rainCoat, rainBoots = true;
+    }
+    if (chanceOfSnow > 50) {
+        jacket, gloves, hat = true;
+        snowBoots = true;
+    }
+
     var suggestion = "Clothing suggestions for today's weather: ";
     clothing.forEach(element => {
         if (element = true) {
@@ -67,7 +93,9 @@ var makeSuggestions = function () {
          alert(suggestion);
     });
 }
-/* var maxTemp;
+/* 
+var maxTemp;
+var maxTemp;
 var minTemp;
 var chanceOfRain;
 var chanceOfSnow;
@@ -95,6 +123,6 @@ var makeApiRequest = function(){
                 console.log(chanceOfSnow);
                 console.log(maxWind);;
             }
-            
 } */
 
+}
