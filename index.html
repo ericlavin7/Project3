@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -53,12 +54,9 @@
       <p>
         <p>Enter a zip code <br>
           <input id="textbox" type="text" name="zipcode" />
-          <div class="textbox">
-            
-            <div class="search"></div>
-          </div>
         </p>
-        <button onclick="makeApiRequest()"> Get Forecast </button>
+        <button id="forecastButton"style="display:in-line block" onclick="makeApiRequest()"> Get Forecast </button>
+        <button id="suggestionButton" style=" visibility: hidden;" onclick="makeSuggestions()"> Get Clothing Suggestions </button>
       </p>
     </div>
   </section>
@@ -69,34 +67,54 @@
       <div class="row">
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text id="temp" x="50%" y="50%" fill="#eceeef" dy=".3em">Highest / Lowest</text></svg>
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Highest / Lowest</text></svg>
             <div class="card-body">
-              <p class="card-text">Max / Min Temperature</p>
-              <div class="d-flex justify-content-between align-items-center"></div>
+              <p id="temp" class="card-text">(Temp)</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <!--<button type="button" class="btn btn-sm btn-outline-secondary">Maybe?</button>-->
+                </div>
+                <!--<small class="text-muted">zip code</small>-->
+              </div>
             </div>
           </div>
         </div>
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text id="chanceOfRain" x="50%" y="50%" fill="#eceeef" dy=".3em">Chance of Rain</text></svg>
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Chance of Rain</text></svg>
             <div class="card-body">
-              <p class="card-text">Chance of Rain</p>
-              <div class="d-flex justify-content-between align-items-center"></div>
+              <p id="chanceOfRain" class="card-text">(Chance)</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <!-- <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                </div> -->
+                <!-- <small class="text-muted">zip code</small> -->
+              </div>
             </div>
           </div>
-          <button onclick="makeSuggestions()">Click here for clothing suggestions for Today! </button>
         </div>
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text id ="chanceOfSnow" x="50%" y="50%" fill="#eceeef" dy=".3em">Chance of Snow</text></svg>
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Chance of Snow</text></svg>
             <div class="card-body">
-              <p class="card-text">Chance of Snow</p>
-              <div class="d-flex justify-content-between align-items-center"></div>
+              <p id ="chanceOfSnow" class="card-text">(Chance)</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <!-- <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                </div> -->
+                <!-- <small id = "zip" class="text-muted">zip code</small> -->
+              </div>
+              
             </div>
+            
           </div>
-        </div>
+          
+      </div>
+      
     </div>
+    
   </div>
+
 </main>
 
 <footer class="text-muted">
@@ -105,8 +123,13 @@
       <a href="#">Back to top</a>
     </p>
     <p>APIs <a href="#">Visit the api for more info</a></p>
-    <p>Made by Eric Lavin, Minho Lee, Holly</p>
+    <p>Made by Eric Lavin & Minho Lee</p>
   </div>
 </footer>
-  <script src ="userInteraction.js" > </script>
-</html>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+      <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+      <script src ="userInteraction.js" > </script>
+    </html>
+
+
