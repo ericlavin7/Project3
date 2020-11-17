@@ -4,11 +4,8 @@ var chanceOfRain;
 var chanceOfSnow;
 var maxWind;
 
-
 var makeApiRequest = function(){
-
     document.getElementById("suggestionButton").style.visibility = "visible";
-
 
 var makeApiRequest = function(){
 
@@ -38,7 +35,6 @@ var makeApiRequest = function(){
                 document.getElementById("chanceOfRain").innerHTML = "Rain " + chanceOfRain +"%";
                 document.getElementById("chanceOfSnow").innerHTML = "Snow " + chanceOfSnow +"%";
             }
-            
 }
 
 var makeSuggestions = function () {
