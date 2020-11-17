@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -50,13 +49,10 @@
   <section class="jumbotron text-center">
     <div class="container">
       <h1>Today's weather</h1>
-      <!--<p class="lead text-muted">Dress Me for a Comfortable Day</p>-->
+      <p class="lead text-muted">Dress Me for a Comfortable Daytion below</p>
+      <p class="lead text-muted">Suggestions</p>
       <p>
-        <p>Enter a zip code <br>
-          <input id="textbox" type="text" name="zipcode" />
-        </p>
-        <button id="forecastButton"style="display:in-line block" onclick="makeApiRequest()"> Get Forecast </button>
-        <button id="suggestionButton" style=" visibility: hidden;" onclick="makeSuggestions()"> Get Clothing Suggestions </button>
+        <a href="#" class="btn btn-primary my-2">Look for another location</a>
       </p>
     </div>
   </section>
@@ -69,12 +65,12 @@
           <div class="card mb-4 shadow-sm">
             <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Highest / Lowest</text></svg>
             <div class="card-body">
-              <p id="temp" class="card-text">(Temp)</p>
+              <p class="card-text">(Temp)</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <!--<button type="button" class="btn btn-sm btn-outline-secondary">Maybe?</button>-->
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Maybe?</button>
                 </div>
-                <!--<small class="text-muted">zip code</small>-->
+                <small class="text-muted">zip code</small>
               </div>
             </div>
           </div>
@@ -83,12 +79,12 @@
           <div class="card mb-4 shadow-sm">
             <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Chance of Rain</text></svg>
             <div class="card-body">
-              <p id="chanceOfRain" class="card-text">(Chance)</p>
+              <p class="card-text">(Chance)</p>
               <div class="d-flex justify-content-between align-items-center">
                 <!-- <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                 </div> -->
-                <!-- <small class="text-muted">zip code</small> -->
+                <small class="text-muted">zip code</small>
               </div>
             </div>
           </div>
@@ -97,26 +93,21 @@
           <div class="card mb-4 shadow-sm">
             <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Chance of Snow</text></svg>
             <div class="card-body">
-              <p id ="chanceOfSnow" class="card-text">(Chance)</p>
+              <p class="card-text">(Chance)</p>
               <div class="d-flex justify-content-between align-items-center">
                 <!-- <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                 </div> -->
-                <!-- <small id = "zip" class="text-muted">zip code</small> -->
+                <small class="text-muted">zip code</small>
               </div>
-              
             </div>
-            
           </div>
-          
       </div>
       
     </div>
-    
   </div>
 
 </main>
-
 <footer class="text-muted">
   <div class="container">
     <p class="float-right">
@@ -128,8 +119,4 @@
 </footer>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
       <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
-
-      <script src ="userInteraction.js" > </script>
-    </html>
-
-
+</html>

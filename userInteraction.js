@@ -4,9 +4,13 @@ var chanceOfRain;
 var chanceOfSnow;
 var maxWind;
 
+
 var makeApiRequest = function(){
 
     document.getElementById("suggestionButton").style.visibility = "visible";
+
+
+var makeApiRequest = function(){
 
     var request = new XMLHttpRequest();
 
