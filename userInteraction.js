@@ -3,13 +3,17 @@ var minTemp;
 var chanceOfRain;
 var chanceOfSnow;
 var maxWind;
+
 var suggestion = "Clothing suggestions for today's weather: ";
 
+
 var makeApiRequest = function(){
+    document.getElementById("suggestionButton").style.visibility = "visible";
+
     var request = new XMLHttpRequest();
 
             var userInput = document.getElementById("textbox").value;
-            console.log(userInput);
+            console.log("zip code: " + userInput);
 
             request.open("GET", 
             "http://api.weatherapi.com/v1/forecast.json?key=dce780e048df4327bcf60314201011&q=" + userInput + "&days=1", true);
@@ -22,22 +26,19 @@ var makeApiRequest = function(){
                 chanceOfRain = data.forecast.forecastday[0].day.daily_chance_of_rain;
                 chanceOfSnow = data.forecast.forecastday[0].day.daily_chance_of_snow;
                 maxWind = data.forecast.forecastday[0].day.maxwind_mph;
-                console.log(maxTemp);
-                console.log(minTemp);
-                console.log(chanceOfRain);
-                console.log(chanceOfSnow);
-                console.log(maxWind);
+                console.log("Max Temp: " + maxTemp);
+                console.log("Min Temp: " + minTemp);
+                console.log("Chance of Rain: " + chanceOfRain);
+                console.log("Chance of Snow: " + chanceOfSnow);
+                console.log("Max Wind: " + maxWind);
 
-                document.getElementById("temp").innerHTML = "Maximum temp: " + maxTemp +" degrees Fahrenheit.\n" + "Minimum temp: " + minTemp +" degrees Fahrenheit.";
-                document.getElementById("chanceOfRain").innerHTML = "The chance of rain is " + chanceOfRain +"%.";
-                document.getElementById("chanceOfSnow").innerHTML = "The chance of snow is " + chanceOfSnow +"%.";
+                document.getElementById("temp").innerHTML = maxTemp + " F / " + minTemp + " F";
+                document.getElementById("chanceOfRain").innerHTML = "Rain " + chanceOfRain +"%";
+                document.getElementById("chanceOfSnow").innerHTML = "Snow " + chanceOfSnow +"%";
             }
-            
 }
 
-
-    var makeSuggestions = function () {
-
+var makeSuggestions = function () {
         if (maxTemp <= 32) {
             suggestion += "hat, jacket, ";
             if (maxTemp < 10) {
@@ -69,35 +70,4 @@ var makeApiRequest = function(){
         return suggestion;
     
     }
-
-
-var maxTemp;
-var minTemp;
-var chanceOfRain;
-var chanceOfSnow;
-var maxWind;
-var makeApiRequest = function(){
-    var request = new XMLHttpRequest();
-
-            var userInput = document.getElementById("textbox").value;
-            console.log(userInput);
-
-            request.open("GET", 
-            "http://api.weatherapi.com/v1/forecast.json?key=dce780e048df4327bcf60314201011&q=" + userInput + "&days=1", true);
-            request.send();
-
-            request.onload = function(){
-                data = JSON.parse(this.response);
-                maxTemp = data.forecast.forecastday[0].day.maxtemp_f;
-                minTemp = data.forecast.forecastday[0].day.mintemp_f;
-                chanceOfRain = data.forecast.forecastday[0].day.daily_chance_of_rain;
-                chanceOfSnow = data.forecast.forecastday[0].day.daily_chance_of_snow;
-                maxWind = data.forecast.forecastday[0].day.maxwind_mph;
-                console.log(maxTemp);
-                console.log(minTemp);
-                console.log(chanceOfRain);
-                console.log(chanceOfSnow);
-                console.log(maxWind);;
-            }
-            
 }
