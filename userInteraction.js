@@ -4,6 +4,8 @@ var chanceOfRain;
 var chanceOfSnow;
 var maxWind;
 
+var conditions;
+
 var makeApiRequest = function(){
     document.getElementById("suggestionButton").style.visibility = "visible";
 
@@ -23,11 +25,14 @@ var makeApiRequest = function(){
                 chanceOfRain = data.forecast.forecastday[0].day.daily_chance_of_rain;
                 chanceOfSnow = data.forecast.forecastday[0].day.daily_chance_of_snow;
                 maxWind = data.forecast.forecastday[0].day.maxwind_mph;
+                conditions = data.forecast.forecastday[0].day.condition.text;
+                
                 console.log("Max Temp: " + maxTemp);
                 console.log("Min Temp: " + minTemp);
                 console.log("Chance of Rain: " + chanceOfRain);
                 console.log("Chance of Snow: " + chanceOfSnow);
                 console.log("Max Wind: " + maxWind);
+                console.log("Conditions: " + conditions);
 
                 document.getElementById("temp").innerHTML = maxTemp + " F / " + minTemp + " F";
                 document.getElementById("chanceOfRain").innerHTML = "Rain " + chanceOfRain +"%";
@@ -36,37 +41,37 @@ var makeApiRequest = function(){
 }
 
 var makeSuggestions = function () {
-    var clothing = {umbrella:false, rainCoat:false, rainBoots:false,snowBoots:false,
-     jacket:false, gloves:false, hat:false, shorts:false, shades:false, hoodie:false};
+
+    var suggestion = "Clothing suggestions for today's weather: ";
+
+    suggestion += "The day is looking like it will be " + conditions + "; therefore, you should utilize ";
     if (maxTemp <= 32) {
-        jacket, gloves, hat = true;
+        suggestion += "hat, jacket, ";
         if (maxTemp < 10) {
-            snowBoots = true;
+            suggestion += "boots, ";
         }
     }
     if (maxTemp >= 70) {
-        shorts = true;
+        suggestion += "shorts, ";
     }
-    if (minTemp > 32 && maxTemp < 80) {
-        hoodie = true;
+    if (minTemp > 32 && maxTemp < 60) {
+        suggestion += "hoodie, ";
     }
     if (chanceOfRain < 10) {
-        shades = true;
+        suggestion += "shades, ";
     }
     if (chanceOfRain > 50) {
-        umbrella, rainCoat, rainBoots = true;
+        suggestion += "umbrella, rain coat, rain boots, ";
     }
     if (chanceOfSnow > 50) {
-        jacket, gloves, hat = true;
-        snowBoots = true;
-    }
-
-    var suggestion = "Clothing suggestions for today's weather: ";
-    clothing.forEach(element => {
-        if (element = true) {
-            suggestion += " "+element;
+        suggestion += "jacket, gloves, hat, ";
+        
+        if (maxTemp > 10) {
+        suggestion += "snow boots, ";
         }
-        suggestion += ". Use your discretion.";
-         alert(suggestion);
-    });
+    }
+    suggestion += "but use your discretion.";
+    alert(suggestion);
+    return suggestion;
+
 }
