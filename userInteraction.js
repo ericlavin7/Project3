@@ -5,16 +5,11 @@ var chanceOfSnow;
 var maxWind;
 var conditions;
 
-var suggestion = "Clothing suggestions for today's weather: ";
-
-
 var makeApiRequest = function(){
-    document.getElementById("suggestionButton").style.visibility = "visible";
-
     var request = new XMLHttpRequest();
 
             var userInput = document.getElementById("textbox").value;
-            console.log("zip code: " + userInput);
+            console.log(userInput);
 
             request.open("GET", 
             "http://api.weatherapi.com/v1/forecast.json?key=dce780e048df4327bcf60314201011&q=" + userInput + "&days=1", true);
@@ -27,6 +22,7 @@ var makeApiRequest = function(){
                 chanceOfRain = data.forecast.forecastday[0].day.daily_chance_of_rain;
                 chanceOfSnow = data.forecast.forecastday[0].day.daily_chance_of_snow;
                 maxWind = data.forecast.forecastday[0].day.maxwind_mph;
+
                 conditions = data.forecast.forecastday[0].day.condition.text;
                 console.log("Max Temp: " + maxTemp);
                 console.log("Min Temp: " + minTemp);
@@ -35,15 +31,20 @@ var makeApiRequest = function(){
                 console.log("Max Wind: " + maxWind);
                 console.log("Conditions: " + conditions);
 
-                document.getElementById("temp").innerHTML = maxTemp + " F / " + minTemp + " F";
-                document.getElementById("chanceOfRain").innerHTML = "Rain " + chanceOfRain +"%";
-                document.getElementById("chanceOfSnow").innerHTML = "Snow " + chanceOfSnow +"%";
+
+                document.getElementById("temp").innerHTML = "Maximum temp: " + maxTemp +" degrees Fahrenheit.\n" + "Minimum temp: " + minTemp +" degrees Fahrenheit.";
+                document.getElementById("chanceOfRain").innerHTML = "The chance of rain is " + chanceOfRain +"%.";
+                document.getElementById("chanceOfSnow").innerHTML = "The chance of snow is " + chanceOfSnow +"%.";
             }
+            
 }
 
-var makeSuggestions = function () {
+
+    var makeSuggestions = function () {
+        var suggestion;
 
         suggestion += "The day is looking like it will be " + conditions + "; therefore, you should utilize ";
+
         if (maxTemp <= 32) {
             suggestion += "hat, jacket, ";
             if (maxTemp < 10) {
@@ -74,4 +75,5 @@ var makeSuggestions = function () {
         return suggestion;
     
     }
+
 
