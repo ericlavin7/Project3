@@ -3,6 +3,7 @@ var minTemp;
 var chanceOfRain;
 var chanceOfSnow;
 var maxWind;
+var conditions;
 
 var makeApiRequest = function(){
     var request = new XMLHttpRequest();
@@ -21,11 +22,15 @@ var makeApiRequest = function(){
                 chanceOfRain = data.forecast.forecastday[0].day.daily_chance_of_rain;
                 chanceOfSnow = data.forecast.forecastday[0].day.daily_chance_of_snow;
                 maxWind = data.forecast.forecastday[0].day.maxwind_mph;
-                console.log(maxTemp);
-                console.log(minTemp);
-                console.log(chanceOfRain);
-                console.log(chanceOfSnow);
-                console.log(maxWind);
+
+                conditions = data.forecast.forecastday[0].day.condition.text;
+                console.log("Max Temp: " + maxTemp);
+                console.log("Min Temp: " + minTemp);
+                console.log("Chance of Rain: " + chanceOfRain);
+                console.log("Chance of Snow: " + chanceOfSnow);
+                console.log("Max Wind: " + maxWind);
+                console.log("Conditions: " + conditions);
+
 
                 document.getElementById("temp").innerHTML = "Maximum temp: " + maxTemp +" degrees Fahrenheit.\n" + "Minimum temp: " + minTemp +" degrees Fahrenheit.";
                 document.getElementById("chanceOfRain").innerHTML = "The chance of rain is " + chanceOfRain +"%.";
@@ -36,8 +41,10 @@ var makeApiRequest = function(){
 
 
     var makeSuggestions = function () {
-        var suggestion = "Clothing suggestions for today's weather: ";
-        
+        var suggestion;
+
+        suggestion += "The day is looking like it will be " + conditions + "; therefore, you should utilize ";
+
         if (maxTemp <= 32) {
             suggestion += "hat, jacket, ";
             if (maxTemp < 10) {
@@ -47,7 +54,7 @@ var makeApiRequest = function(){
         if (maxTemp >= 70) {
             suggestion += "shorts, ";
         }
-        if (minTemp > 32 && maxTemp < 80) {
+        if (minTemp > 32 && maxTemp < 60) {
             suggestion += "hoodie, ";
         }
         if (chanceOfRain < 10) {
@@ -57,9 +64,8 @@ var makeApiRequest = function(){
             suggestion += "umbrella, rain coat, rain boots, ";
         }
         if (chanceOfSnow > 50) {
-            if (maxTemp>32) {
-                suggestion += "jacket, gloves, hat, ";
-            }
+            suggestion += "jacket, gloves, hat, ";
+            
             if (maxTemp > 10) {
             suggestion += "snow boots, ";
             }
@@ -71,33 +77,3 @@ var makeApiRequest = function(){
     }
 
 
-var maxTemp;
-var minTemp;
-var chanceOfRain;
-var chanceOfSnow;
-var maxWind;
-var makeApiRequest = function(){
-    var request = new XMLHttpRequest();
-
-            var userInput = document.getElementById("textbox").value;
-            console.log(userInput);
-
-            request.open("GET", 
-            "http://api.weatherapi.com/v1/forecast.json?key=dce780e048df4327bcf60314201011&q=" + userInput + "&days=1", true);
-            request.send();
-
-            request.onload = function(){
-                data = JSON.parse(this.response);
-                maxTemp = data.forecast.forecastday[0].day.maxtemp_f;
-                minTemp = data.forecast.forecastday[0].day.mintemp_f;
-                chanceOfRain = data.forecast.forecastday[0].day.daily_chance_of_rain;
-                chanceOfSnow = data.forecast.forecastday[0].day.daily_chance_of_snow;
-                maxWind = data.forecast.forecastday[0].day.maxwind_mph;
-                console.log(maxTemp);
-                console.log(minTemp);
-                console.log(chanceOfRain);
-                console.log(chanceOfSnow);
-                console.log(maxWind);;
-            }
-            
-}
