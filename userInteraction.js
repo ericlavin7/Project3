@@ -4,6 +4,9 @@ var chanceOfRain;
 var chanceOfSnow;
 var maxWind;
 
+var suggestion = "Clothing suggestions for today's weather: ";
+
+
 var makeApiRequest = function(){
     document.getElementById("suggestionButton").style.visibility = "visible";
 
@@ -36,37 +39,35 @@ var makeApiRequest = function(){
 }
 
 var makeSuggestions = function () {
-    var clothing = {umbrella:false, rainCoat:false, rainBoots:false,snowBoots:false,
-     jacket:false, gloves:false, hat:false, shorts:false, shades:false, hoodie:false};
-    if (maxTemp <= 32) {
-        jacket, gloves, hat = true;
-        if (maxTemp < 10) {
-            snowBoots = true;
+        if (maxTemp <= 32) {
+            suggestion += "hat, jacket, ";
+            if (maxTemp < 10) {
+                suggestion += "boots, ";
+            }
         }
-    }
-    if (maxTemp >= 70) {
-        shorts = true;
-    }
-    if (minTemp > 32 && maxTemp < 80) {
-        hoodie = true;
-    }
-    if (chanceOfRain < 10) {
-        shades = true;
-    }
-    if (chanceOfRain > 50) {
-        umbrella, rainCoat, rainBoots = true;
-    }
-    if (chanceOfSnow > 50) {
-        jacket, gloves, hat = true;
-        snowBoots = true;
-    }
-
-    var suggestion = "Clothing suggestions for today's weather: ";
-    clothing.forEach(element => {
-        if (element = true) {
-            suggestion += " "+element;
+        if (maxTemp >= 70) {
+            suggestion += "shorts, ";
         }
-        suggestion += ". Use your discretion.";
-         alert(suggestion);
-    });
+        if (minTemp > 32 && maxTemp < 80) {
+            suggestion += "hoodie, ";
+        }
+        if (chanceOfRain < 10) {
+            suggestion += "shades, ";
+        }
+        if (chanceOfRain > 50) {
+            suggestion += "umbrella, rain coat, rain boots, ";
+        }
+        if (chanceOfSnow > 50) {
+            if (maxTemp>32) {
+                suggestion += "jacket, gloves, hat, ";
+            }
+            if (maxTemp > 10) {
+            suggestion += "snow boots, ";
+            }
+        }
+        suggestion += "but use your discretion.";
+        alert(suggestion);
+        return suggestion;
+    
+    }
 }
