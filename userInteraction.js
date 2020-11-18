@@ -41,9 +41,7 @@ var makeApiRequest = function(){
 
 
     var makeSuggestions = function () {
-        var suggestion;
-
-        suggestion += "The day is looking like it will be " + conditions + "; therefore, you should utilize ";
+        var suggestion = "The day is looking like it will be " + conditions + "; therefore, you should utilize ";
 
         if (maxTemp <= 32) {
             suggestion += "hat, jacket, ";
@@ -75,5 +73,3 @@ var makeApiRequest = function(){
         return suggestion;
     
     }
-
-
