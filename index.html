@@ -54,7 +54,8 @@
         <p>Enter a zip code <br>
           <input id="textbox" type="text" name="zipcode" />
         </p>
-        <button onclick="makeApiRequest()"> Get Forecast </button>
+        <button id="forecastButton"style="display:in-line block" onclick="makeApiRequest()"> Get Forecast </button>
+        <button id="suggestionButton" style=" visibility: hidden;" onclick="makeSuggestions()"> Get Clothing Suggestions </button>
       </p>
     </div>
   </section>
@@ -110,7 +111,7 @@
       </div>
       
     </div>
-    <button onclick="makeSuggestions()"> Click here for clothing suggestions based on the weather! </button>
+    
   </div>
 
 </main>
@@ -121,7 +122,7 @@
       <a href="#">Back to top</a>
     </p>
     <p>APIs <a href="#">Visit the api for more info</a></p>
-    <p>Made by Eric Lavin, Minho Lee & Holly Beske</p>
+    <p>Made by Eric Lavin & Minho Lee</p>
   </div>
 </footer>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
