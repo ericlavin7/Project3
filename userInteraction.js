@@ -3,7 +3,6 @@ var minTemp;
 var chanceOfRain;
 var chanceOfSnow;
 var maxWind;
-
 var conditions;
 
 var makeApiRequest = function(){
@@ -17,7 +16,6 @@ var makeApiRequest = function(){
             request.open("GET", 
             "http://api.weatherapi.com/v1/forecast.json?key=dce780e048df4327bcf60314201011&q=" + userInput + "&days=1", true);
             request.send();
-
             request.onload = function(){
                 data = JSON.parse(this.response);
                 maxTemp = data.forecast.forecastday[0].day.maxtemp_f;
@@ -44,7 +42,7 @@ var makeSuggestions = function () {
 
     var suggestion = "Clothing suggestions for today's weather: ";
 
-    suggestion += "The day is looking like it will be " + conditions + "; therefore, you should utilize ";
+    suggestion += "The day is looking like it will be " + conditions + "; you should utilize ";
     if (maxTemp <= 32) {
         suggestion += "hat, jacket, ";
         if (maxTemp < 10) {
